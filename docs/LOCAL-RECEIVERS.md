@@ -1,5 +1,7 @@
 # Local receivers
 
+> Fork documentation: [Map](README.md) · [Unified product](UNIFIED-WORLD.md). Existing runtime behavior below; integration proposals are not enabled features.
+
 The Local ADS-B layer draws aircraft heard by your own receivers. It has two
 inputs, and it can use both at once.
 

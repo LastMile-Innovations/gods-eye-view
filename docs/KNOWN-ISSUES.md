@@ -1,5 +1,7 @@
 # KNOWN ISSUES
 
+> Fork documentation: [Map](README.md) · [Unified product](UNIFIED-WORLD.md). Existing runtime behavior below; integration proposals are not enabled features.
+
 Updated: September 22, 2026
 
 This file tracks active runtime issues only.

@@ -22,6 +22,8 @@ export function createStandaloneApplication({
   sources = {},
   streetLevelProviders,
   allowQaRegistration = false,
+  welcome = true,
+  initialWorld = false,
 }) {
   if (constructed)
     throw new Error('The standalone application already owns this page');
@@ -80,10 +82,17 @@ export function createStandaloneApplication({
         loaderStatus,
         placeSearch,
         catalog,
+        initialWorld,
       }),
     createData: (context) =>
       createStandaloneData({ ...context, allowQaRegistration, catalog }),
     createTools: (context) =>
-      createStandaloneTools({ ...context, loadingScreen, placeSearch, voice }),
+      createStandaloneTools({
+        ...context,
+        loadingScreen,
+        placeSearch,
+        voice,
+        welcome,
+      }),
   });
 }

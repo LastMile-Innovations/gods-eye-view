@@ -1,5 +1,7 @@
 # Tools and the MCP server
 
+> Fork documentation: [Map](README.md) · [Unified product](UNIFIED-WORLD.md). Existing runtime behavior below; integration proposals are not enabled features.
+
 Tools answer questions from God's Eye View data for language-model clients.
 They are defined once and exposed through adapters: the Model Context Protocol
 (MCP) and function calling, which voice uses.

@@ -1,0 +1,407 @@
+.nw-shell {
+  --nd-bg: #101b1e;
+  --nd-surface: #17262a;
+  --nd-raised: #203237;
+  --nd-border: #91b5af33;
+  --nd-text: #eceee8;
+  --nd-muted: #a5b8b5;
+  --nd-accent: #86dfc2;
+  --nd-focus: #b1f4de;
+  --nd-radius: 14px;
+  --nd-space: 8px;
+  --nd-motion: 140ms;
+  color: var(--nd-text);
+  font-family:
+    Inter,
+    ui-sans-serif,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+}
+.nw-shell :is(button, input, textarea, select, summary):focus-visible {
+  outline: 2px solid var(--nd-focus);
+  outline-offset: 3px;
+}
+.nw-shell :is(input, textarea, select) {
+  background: #0d181b;
+  color: var(--nd-text);
+  border: 1px solid var(--nd-border);
+  border-radius: 8px;
+}
+.nw-shell select {
+  min-height: 34px;
+  padding: 6px 8px;
+  max-width: 100%;
+}
+.nw-shell .nw-muted {
+  color: var(--nd-muted);
+}
+.nw-shell .nw-primary {
+  background: var(--nd-accent);
+  color: #09241d;
+}
+.nw-shell :is(h1, h2, h3) {
+  letter-spacing: -0.025em;
+}
+.nw-shell .nw-service-head > .nw-eyebrow {
+  display: none;
+}
+.nd-icon {
+  flex-shrink: 0;
+  vertical-align: middle;
+  stroke-width: 1.7;
+}
+.nw-shell .nd-dock button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px 12px;
+}
+.nw-shell .nd-window {
+  background: var(--nd-bg);
+  border-color: var(--nd-border);
+  border-radius: var(--nd-radius);
+}
+.nw-shell .nd-window:not(.nd-focused) {
+  box-shadow: 0 12px 40px #0005;
+}
+.nw-shell .nd-window:not(.nd-focused) .nd-titlebar {
+  background: #18282b;
+}
+.nw-shell .nd-window:not(.nd-focused) .nd-traffic {
+  opacity: 0.5;
+}
+.nw-shell .nd-titlebar {
+  background: #23383a;
+  gap: 10px;
+}
+.nw-shell .nd-context-badge {
+  font-size: 11px;
+  min-height: 30px;
+  width: 118px;
+}
+.nd-titlebar-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.nw-shell .nd-menu {
+  gap: 8px;
+}
+.nw-shell .nd-layout {
+  font-size: 12px;
+}
+.nd-workspace-menu {
+  position: relative;
+  white-space: nowrap;
+  font-size: 12px;
+}
+.nd-workspace-menu summary {
+  cursor: pointer;
+  padding: 10px;
+}
+.nd-workspace-menu[open] > button {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 80;
+  box-shadow: 0 8px 24px #0007;
+}
+.nw-draft-status {
+  font-size: 11px;
+  color: var(--nd-muted);
+  max-width: 150px;
+}
+.nd-snap-preview[hidden],
+.nd-mobile,
+.nd-dock button[hidden] {
+  display: none !important;
+}
+.nd-snap-preview {
+  position: absolute;
+  z-index: 18;
+  pointer-events: none;
+  background: #86dfc229;
+  border: 2px solid #86dfc2;
+  border-radius: 14px;
+}
+.nd-commands {
+  max-height: min(65vh, 560px);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.nd-command-group {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--nd-muted);
+  margin: 10px 0 0;
+}
+.nw-shell .nd-launcher {
+  width: min(560px, calc(100vw - 24px));
+  max-height: calc(100dvh - 32px);
+  padding: 24px;
+}
+.nw-shell .nd-commands button {
+  text-align: left;
+  min-height: 40px;
+  background: #203237;
+}
+.nw-shell .nw-header {
+  gap: 12px;
+  padding: 8px 18px;
+}
+.nw-shell .nw-brand {
+  min-width: 130px;
+}
+.nw-shell .nw-brand span {
+  display: none;
+}
+.nw-shell .nd-active-name {
+  margin-right: auto;
+  font-weight: 500;
+}
+.nw-draft-recovery {
+  position: absolute;
+  right: 18px;
+  top: 92px;
+  z-index: 40;
+  max-width: min(430px, calc(100% - 36px));
+  pointer-events: auto;
+}
+.nw-draft-recovery:empty {
+  display: none;
+}
+.nw-recovery-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: #243b38;
+  border: 1px solid var(--nd-border);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+.nw-recovery-row span {
+  flex: 1;
+}
+.nw-linked-records {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+.nw-shell .nw-domain-view {
+  overflow: auto;
+}
+.nw-shell .nw-service-head h1 {
+  font-size: 24px;
+}
+.nw-shell .nw-form-card {
+  background: var(--nd-bg);
+}
+.nw-shell .nw-world-surface {
+  max-width: min(560px, calc(100vw - 32px));
+}
+.nw-shell[data-presentation='focus'] .nw-world-surface {
+  display: none;
+}
+@media (max-width: 1199px) {
+  .nw-shell .nd-menu > button[aria-label='Window overview'] {
+    display: none;
+  }
+  .nw-shell .nd-active-name {
+    display: none;
+  }
+  .nw-draft-status {
+    max-width: 115px;
+  }
+}
+@media (max-width: 767px) {
+  .nw-shell .nw-header {
+    padding: 8px 10px;
+    gap: 6px;
+    height: 56px;
+  }
+  .nw-shell .nw-brand {
+    min-width: 0;
+    flex: none;
+  }
+  .nw-shell .nw-brand strong {
+    font-size: 16px;
+  }
+  .nw-shell .nd-menu {
+    justify-content: flex-end;
+    margin: 0;
+  }
+  .nw-shell .nd-menu > :not(.nd-agent-trigger) {
+    display: none;
+  }
+  .nw-shell .nd-menu .nd-agent-trigger {
+    font-size: 12px;
+  }
+  .nw-shell .nd-menu .nd-agent-trigger:before {
+    content: none;
+  }
+  .nw-shell .nw-header .nw-draft-status {
+    display: none;
+  }
+  .nw-shell .nw-status {
+    top: 56px;
+    font-size: 11px;
+    padding: 6px 12px;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .nw-shell .nd-dock {
+    bottom: max(32px, calc(env(safe-area-inset-bottom) + 24px));
+    width: calc(100% - 16px);
+    justify-content: space-around;
+    gap: 2px;
+    overflow: visible;
+    padding: 6px;
+  }
+  .nw-shell .nd-dock > button[data-app-id] {
+    display: none;
+  }
+  .nw-shell .nd-dock > .nd-mobile {
+    display: flex !important;
+  }
+  .nw-shell .nd-dock button {
+    min-width: 0;
+    padding: 8px 10px;
+    font-size: 12px;
+    min-height: 44px;
+  }
+  .nw-shell .nd-titlebar {
+    height: 44px;
+    padding: 0 8px;
+    gap: 6px;
+  }
+  .nw-shell .nd-window-title {
+    min-width: 0;
+    font-size: 12px;
+  }
+  .nw-shell .nd-context-badge {
+    width: 94px;
+    font-size: 10px;
+  }
+  .nw-shell .nd-titlebar-actions > button {
+    display: none;
+  }
+  .nw-shell .nd-traffic {
+    gap: 2px;
+  }
+  .nw-shell .nd-traffic button {
+    width: 24px;
+    min-height: 32px;
+  }
+  .nw-shell .nw-inspector {
+    width: 100%;
+    max-height: 60dvh;
+    overflow: auto;
+  }
+  .nw-shell .nw-service-head h1 {
+    font-size: 21px;
+  }
+  .nw-shell .nw-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .nw-shell .nw-service-view,
+  .nw-shell .nw-domain-view {
+    padding: 12px;
+  }
+  .nw-shell .nw-stat-pills {
+    flex-wrap: wrap;
+  }
+  .nw-shell .nw-world-surface {
+    left: 12px;
+    right: 12px;
+    max-width: none;
+    bottom: 80px;
+  }
+  .nw-draft-recovery {
+    top: 88px;
+    right: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nw-shell * {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* The desktop owns its chrome; world-only mode exposes the inherited globe tools. */
+body.neighbor-desktop-apps
+  :is(
+    #data-panel,
+    #cctv-panel,
+    #street-level-panel,
+    #scene-panel,
+    #global-context-panel,
+    #active-style-name,
+    #traffic-sync-chip,
+    #cctv-sync-chip,
+    #key-setup-chip
+  ) {
+  visibility: hidden;
+  pointer-events: none;
+}
+.nw-shell .nd-titlebar .nd-window-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nw-shell .nd-context-badge {
+  flex-shrink: 0;
+}
+
+/* Limit window layout/paint work to each app; canvas stays full-size underneath. */
+.nw-shell .nd-window {
+  contain: layout paint;
+}
+.nw-shell .nd-app-body {
+  overscroll-behavior: contain;
+}
+.nd-dragging,
+.nd-dragging * {
+  cursor: grabbing !important;
+  user-select: none !important;
+}
+
+body.neighbor-desktop #cesium-credits {
+  white-space: normal;
+  line-height: 20px;
+  background: #0d181bd9;
+  border-radius: 4px;
+  padding: 0 5px;
+}
+body.neighbor-desktop .cesium-credit-lightbox-overlay {
+  z-index: 12002 !important;
+}
+.nw-shell .nd-dock {
+  bottom: max(32px, calc(env(safe-area-inset-bottom) + 24px));
+}
+body.neighbor-desktop #cesium-credits {
+  width: max-content;
+}
+body.neighbor-desktop #cesium-credits .cesium-widget-credits {
+  position: static;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 8px;
+  margin: 0;
+}
+body.neighbor-desktop #cesium-credits .cesium-credit-logoContainer img {
+  max-height: 14px;
+  width: auto;
+}
+body.neighbor-desktop #cesium-credits .cesium-credit-expand-link {
+  white-space: nowrap;
+}

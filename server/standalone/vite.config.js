@@ -6,6 +6,7 @@ import { localProviderPlugins } from '../providers/local.js';
 import { localMcpPlugin } from '../mcp/plugin.js';
 import { apiNotFoundPlugin } from './api-not-found.js';
 import { standaloneVoiceTools } from './voiceTools.js';
+import { neighborWorkspacePlugin } from '../workspace/plugin.js';
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
 
@@ -18,6 +19,7 @@ export default defineConfig(({ command, mode }) => {
   return createBrowserViteConfig({
     plugins: [
       ...localProviderPlugins({ realtime: { tools: standaloneVoiceTools() } }),
+      neighborWorkspacePlugin(),
       localMcpPlugin(),
       apiNotFoundPlugin(),
     ],

@@ -1,5 +1,7 @@
 # Director authoring and file sharing
 
+> Fork documentation: [Map](README.md) · [Unified product](UNIFIED-WORLD.md). Existing runtime behavior below; integration proposals are not enabled features.
+
 Open Scenes and select a scene and shot. Existing capture, update, playback and
 whole-project export controls remain available. Authored scene content, source
 links, assets and contributor credit are preserved.

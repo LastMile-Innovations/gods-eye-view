@@ -294,6 +294,12 @@ async function main() {
         });
         return;
       }
+      // --disable-web-security suppresses Chrome's normal Origin on POST.
+      // Restore only this fixture's own origin; keep the application's gate intact.
+      if (url.origin === APP_ORIGIN && url.pathname.startsWith('/api/world/v1/') && request.method() !== 'GET') {
+        request.continue({ headers: { ...request.headers(), origin: APP_ORIGIN } });
+        return;
+      }
       request.continue();
     });
 

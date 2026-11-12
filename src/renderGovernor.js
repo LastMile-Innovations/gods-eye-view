@@ -34,6 +34,27 @@
 let _viewer = null;
 let _installed = false;
 const _holds = new Set();
+const _hiddenSurfaces = new Set();
+let _previousLoop;
+export function setRenderSurfaceHidden(owner, hidden) {
+  if (hidden) _hiddenSurfaces.add(owner);
+  else _hiddenSurfaces.delete(owner);
+  applySurfaceVisibility();
+}
+
+function applySurfaceVisibility() {
+  if (!_viewer) return;
+  if (_hiddenSurfaces.size) {
+    if (_previousLoop === undefined)
+      _previousLoop = _viewer.useDefaultRenderLoop;
+    _viewer.useDefaultRenderLoop = false;
+  } else if (_previousLoop !== undefined) {
+    _viewer.useDefaultRenderLoop = _previousLoop;
+    _previousLoop = undefined;
+    applyMode();
+    _viewer.scene?.requestRender?.();
+  }
+}
 
 /** Debug trail of the most recent one-shot render requests (idle mode only). */
 const _recentRequests = [];
@@ -70,6 +91,7 @@ export function installRenderGovernor(viewer) {
   // explicit requests.
   viewer.scene.maximumRenderTimeChange = Infinity;
   applyMode();
+  applySurfaceVisibility();
 }
 
 /**
@@ -125,6 +147,7 @@ export function getRenderGovernorDiagnostics() {
     installed: _installed,
     mode: _holds.size > 0 ? 'continuous' : 'idle',
     holds: [..._holds].sort(),
+    suspended: _hiddenSurfaces.size > 0,
     recentRequests: [..._recentRequests],
   };
 }
@@ -132,6 +155,10 @@ export function getRenderGovernorDiagnostics() {
 /** Release the installed viewer after its animation owners have stopped. */
 export function uninstallRenderGovernor(viewer) {
   if (_viewer !== viewer) return;
+  if (_viewer && _previousLoop !== undefined)
+    _viewer.useDefaultRenderLoop = _previousLoop;
+  _hiddenSurfaces.clear();
+  _previousLoop = undefined;
   _viewer = null;
   _installed = false;
   _holds.clear();
@@ -140,6 +167,10 @@ export function uninstallRenderGovernor(viewer) {
 
 /** Test seam: reset module state between unit tests. */
 export function _resetRenderGovernorForTest() {
+  if (_viewer && _previousLoop !== undefined)
+    _viewer.useDefaultRenderLoop = _previousLoop;
+  _hiddenSurfaces.clear();
+  _previousLoop = undefined;
   _viewer = null;
   _installed = false;
   _holds.clear();

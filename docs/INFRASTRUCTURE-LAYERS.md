@@ -1,5 +1,7 @@
 # Reusing infrastructure layers
 
+> Fork documentation: [Map](README.md) · [Unified product](UNIFIED-WORLD.md). Existing runtime behavior below; integration proposals are not enabled features.
+
 `gods-eye-view/infrastructure` exports `createInfrastructureLayers(services)`.
 It returns fresh datacenter and dam layers in that order, with the existing IDs,
 appearance, label budgets and bundled public datasets. Importing the module or

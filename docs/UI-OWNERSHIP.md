@@ -1,5 +1,7 @@
 # Application UI ownership
 
+> Fork documentation: [Map](README.md) · [Unified product](UNIFIED-WORLD.md). Existing runtime behavior below; integration proposals are not enabled features.
+
 `src/ui/applicationShell.js` constructs controls, connects their explicit inputs
 and coordinates shutdown. `shellFacade.js` preserves the methods used by layers,
 scene playback and voice. It delegates; new behavior belongs with its owner.

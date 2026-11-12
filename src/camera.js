@@ -80,3 +80,11 @@ export function flyToAustin(viewer) {
     if (!viewer.isDestroyed()) viewer.camera.cancelFlight();
   };
 }
+
+/** Calm workspace startup; shared views remain owned by share restoration. */
+export function showWholeEarth(viewer) {
+  viewer.camera.setView({
+    destination: Cesium.Cartesian3.fromDegrees(-30, 20, 22000000),
+    orientation: { heading: 0, pitch: -Math.PI / 2, roll: 0 },
+  });
+}

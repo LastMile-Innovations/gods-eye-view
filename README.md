@@ -1,8 +1,10 @@
+> **LastMile Innovations fork:** [NeighborOS master specification](../NEIGHBOROS_MASTER_SPEC.md) · [Run the native workspace](docs/NEIGHBOROS.md) · [Documentation map](docs/README.md). The local workspace is built over the existing globe; the full marketplace/agent platform remains staged work. Upstream credits and data/asset notices remain applicable.
+
 <div align="center">
 
 # 🌐 God's Eye View
 
-[![CI](https://github.com/bilawalsidhu/gods-eye-view/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bilawalsidhu/gods-eye-view/actions/workflows/ci.yml) [![Reached #1 on GitHub Trending](https://img.shields.io/badge/%231_GitHub_Trending-thank_you!-F0A63C?style=flat-square&logo=github)](https://x.com/bilawalsidhu/status/2093798887815348521)
+[![Upstream CI](https://github.com/bilawalsidhu/gods-eye-view/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bilawalsidhu/gods-eye-view/actions/workflows/ci.yml) [![Reached #1 on GitHub Trending](https://img.shields.io/badge/%231_GitHub_Trending-thank_you!-F0A63C?style=flat-square&logo=github)](https://x.com/bilawalsidhu/status/2093798887815348521)
 
 ### A spy-satellite simulator in your browser — then you realize the sources are public and the data is real.
 
@@ -131,7 +133,7 @@ Use **Node.js 24.x (24.14.0 or later) or 26.x**. The setup doctor warns about
 Node 25, which is end-of-life.
 
 ```bash
-git clone https://github.com/bilawalsidhu/gods-eye-view.git
+git clone https://github.com/LastMile-Innovations/gods-eye-view.git
 cd gods-eye-view
 npm ci
 npm run doctor
@@ -158,7 +160,7 @@ configured keys straight from the Keychain. It starts keyless too.
 No Node install needed; the container publishes the same dev server.
 
 ```bash
-git clone https://github.com/bilawalsidhu/gods-eye-view.git
+git clone https://github.com/LastMile-Innovations/gods-eye-view.git
 cd gods-eye-view
 docker compose up
 ```
@@ -190,7 +192,7 @@ On a NAS, clone onto the share you want the data on and use the share owner's id
 
 ```bash
 cd /volume1/docker
-git clone https://github.com/bilawalsidhu/gods-eye-view.git
+git clone https://github.com/LastMile-Innovations/gods-eye-view.git
 cd gods-eye-view
 env UID=1026 GID=100 docker compose up -d
 ```

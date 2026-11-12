@@ -1,5 +1,7 @@
 # Panel surface contract
 
+> Fork documentation: [Map](README.md) · [Unified product](UNIFIED-WORLD.md). Existing runtime behavior below; integration proposals are not enabled features.
+
 `src/ui/styles/panel-surfaces.css` supplies an opt-in visual surface for new
 panels. It uses the application's default color, font, border and radius tokens;
 Cyber supplies its existing red/slate palette, monospace typography and shaped

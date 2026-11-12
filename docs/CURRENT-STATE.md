@@ -1,5 +1,105 @@
 # God's Eye View Current State
 
+October 19 native execution continuation: the [guarded optimized worker](../../Quanta/docs/specs/41-qualified-optimized-worker.md) now completes one actual 100k synthetic-native-record startup/snapshot observation in 6.288s under the unchanged 30s default. [Integrated evidence](../../research/unified-world/optimized-worker/REPORT.md) retains the earlier 38.524s observation, intermediate dev timeout, exact test/capacity scope and open checkpoint/production gates. This is not 100k app items or hosted/cold/mixed-load qualification.
+
+> October 19 continuation: [verified revision sizes and borrowed statement encoding](../../research/unified-world/database-value-efficiency/REPORT.md) remove redundant native query serialization and write-side value cloning. Frozen nested-value queries take21.2% less time (1.269x). Canonical bytes, authority and durability checks remain intact. IMPLEMENTED_LOCAL / TESTED_LOCAL; release REVIEW_PENDING. Persistent checkpoints and production world scale remain open.
+
+
+> October 18 native code optimization: [direct historical/page seeks](../../Quanta/docs/specs/38-native-historical-seeks.md) and
+> [executed evidence](../../research/unified-world/database-efficiency/REPORT.md) improve frozen historical reads9.245x and history
+> pages4.507x. Operation-scoped node reuse also improves the frozen range workload
+> about7.2x. These are maintained Rust engine changes with unchanged canonical data.
+> Larger-store dev replay remains linear and close to the OS30s deadline; robust
+> hosted large-store recovery, checkpoints, total admission and production scale
+> remain open. IMPLEMENTED_LOCAL / TESTED_LOCAL; release REVIEW_PENDING.
+
+
+> October 18 worker recovery: [implemented ACK recovery](NATIVE-WORKER-RECOVERY.md) and
+> [executed evidence](../../research/unified-world/native-worker-recovery/REPORT.md) add automatic same-store reopening,
+> exact original ACK replay and an unresolved-ACK barrier across account sessions.
+> Activity shows recovery status; idle pool eviction preserves blocked entries.
+> IMPLEMENTED_LOCAL / TESTED_LOCAL, REVIEW_PENDING. Generic effect replay, durable
+> server-restart recovery queues, leases and WAL pruning remain open.
+
+
+**October 18 consumer continuation:** [Activity's manual change inbox](CHANGE-INBOX.md)
+now uses a native owner-controlled checkpoint and stable pending page. It requires
+explicit refresh-before-ACK and reconciles uncertain ACKs by their original key.
+This supplements snapshot polling; browser reload still starts from a fresh
+currently authorized view. [Evidence and open production gates](../../research/unified-world/change-consumers/REPORT.md).
+
+
+## Coherent database synchronization — October 18, 2026
+
+[Runtime/API contract](DATABASE-SYNC.md) and [executed evidence](../../research/unified-world/database-sync/REPORT.md):
+NeighborOS reads its five core projections in one serialized native command and
+polls visible connected sessions every five seconds. Unchanged responses preserve
+the current DOM. Current source policy, strict account-bound comparison cursors,
+single-flight coalescing and late-response disposal remain enforced. This is
+IMPLEMENTED_LOCAL / TESTED_LOCAL and REVIEW_PENDING; push/SSE, durable subscriber
+checkpoints, cross-host synchronization and production qualification remain open.
+
+
+## Native compiler alignment — October 18, 2026
+
+The native build launcher reads the sibling Quanta exact Rust pin and resolves that host toolchain through rustup, replacing the hardcoded 1.98 compiler selection. Current Quanta and the consumer require Rust 1.99.1. This is build tooling and version metadata; the existing native command, authority and recovery behavior is unchanged. [Database research and compiler evidence](../../Quanta/docs/engineering/DATABASE_RESEARCH_REVIEW_2026_10_18.md) records local verification and remaining production gates.
+
+## Native recovery and desktop integration — October 17, 2026
+
+The native adapter freezes admitted command bytes, bounds requests/replies, waits
+for child-process close before opening a replacement, and treats lost responses
+after dispatch as `UNKNOWN_OUTCOME`. Reconciliation uses the original command key;
+an uncertain write must not be blindly repeated as a new command. A real native
+fault test suppresses the committed acknowledgement and kills the worker, then
+confirms that the same key returns the original receipt with one record.
+
+Desktop selection uses a rebuildable index of current authorized projections,
+resolves a shared selected identity once per event, and routes Market/Evidence
+selections to their actual detail views. Independent or unchanged selections do
+not rebuild the world action controls. Hidden-surface registrations also apply
+when made before the render governor is installed. Partially visible globe
+margins continue rendering; Focus retains the three-second suspension grace.
+
+[Implementation, checks and limits](../../research/unified-world/integration-hardening/REPORT.md).
+This is `BUILT_LOCAL / TESTED_LOCAL / REVIEW_PENDING`; it does not establish live
+provider, marketplace, payment, mesh or production security acceptance.
+
+> October 17 executed-check/workflow profile: [current controls and limits](QEVAL-WORKFLOWS.md). Nine native core probes execute; eleven scenarios remain NOT_RUN. Caller workflow approval flags no longer grant execution; actual read workflows require native validation.
+
+> Current hosting/authentication addition, October 17: [hosting guide](HOSTED.md)
+> and [delivery evidence](../../research/unified-world/hosted-foundation/REPORT.md).
+> Hosted OIDC sign-in, session restoration and per-account native stores are built
+> and fixture-tested locally. Development connects automatically without codes.
+> Earlier pairing/local-only statements describe historical delivery profiles.
+
+Build 004 adds [native text derivatives, claim/casebook corrections, revision comparison and scoped local dossiers](../../research/unified-world/build-004/REPORT.md). Approvals pin selected heads and all ancestors; stale or withdrawn approvals refuse download. This remains private local-owner behavior, with full production/public/multiuser scope open.
+
+> Fork documentation: [Map](README.md) · [Unified product](UNIFIED-WORLD.md). Existing runtime behavior below; integration proposals are not enabled features.
+
+## Native lifecycle and Citizen Evidence — local build, October 16, 2026
+
+Build 003 adds a persistent native database session, private durable command journal with exact-key explicit recovery, revisioned named desks, authored-record history and a Citizen Evidence desktop app. Binary originals retain native content roots plus SHA-256/BLAKE3 digests, family/source/context metadata, private lifecycle/custody records, six manual review dimensions, separately assessed claims, duplicate/repost-aware declared source grouping and casebook references. Public, anonymous and multiuser publication/submission remain unbuilt. [Run and limits](NEIGHBOROS.md#native-lifecycle-and-citizen-evidence--build-003), [evidence](../../research/unified-world/build-003/REPORT.md).
+
+The fixed local 64-authored/8-document adapter workload measured p50 snapshot time 548.24 ms before and 16.74 ms after persistent-handle integration. Twelve samples per run, Apple M4/debug build; it excludes new journal-write overhead and is not a production SLO. The native storage format and canonical commit boundary are unchanged. File reads lock preparation controls before asynchronous bytes are read, and cancellation before dispatch has no native effect.
+
+## Desktop foundation — local build, October 16, 2026
+
+Build 002 wraps Records, Board and Documents in first-party floating windows with focus, drag/eight-handle resize, minimize/reopen, close/reopen, maximize/restore, split placement, geometry recovery, dock and an allowlisted command launcher. Each app retains independent selection/search; a record can be explicitly opened in another app. Native commands, grants and canonical evidence storage remain the Build 001 services. Geometry motion does not issue native queries or remount app records. Small viewports use focused apps. [Controls and limits](NEIGHBOROS.md#desktop-foundation--build-002), [master decision](../../NEIGHBOROS_MASTER_SPEC.md#desktop-delivery-decision--build-002), [verification](../../research/unified-world/build-002/REPORT.md).
+
+This is a browser desktop environment. Native OS integration, named desks, multiple instances, linked context groups, all seven capability surfaces and occlusion throttling remain unimplemented. The existing Cesium idle/visibility governor stays authoritative.
+
+## Native workspace — local build, October 16, 2026
+
+The fork entry now composes a NeighborOS workspace over the existing globe. Local-owner pairing and a Rust stdio adapter connect typed records and evidence to the sibling Quanta native libraries. Globe/Board/Documents, linked places/needs/missions/tasks, text import, USGS reference import and original-evidence inspection are available in the bounded local profile. The original welcome remains the default for other standalone constructors; the fork entry selects workspace onboarding. See [run instructions and limits](NEIGHBOROS.md), [master specification](../../NEIGHBOROS_MASTER_SPEC.md), and [build evidence](../../research/unified-world/build-001/REPORT.md). This does not enable the full commerce/agent catalog or establish production acceptance.
+
+## Fork baseline and integration status — October 16, 2026
+
+This runtime reference describes the existing application at fork baseline `20c4c4a97f525c4edb70196db81e0c3bfc1678a1`. The [integration guide](UNIFIED-WORLD.md) separates proposed NeighborOS/Quanta behavior from implementation. The sibling [audit](../../research/unified-world/AUDIT.md) and [verification record](../../research/unified-world/VERIFICATION.md) document source coverage, local checks and limits. Upstream was ten commits newer when inspected; its changes are not implicitly present in this baseline.
+
+Use [application construction](APPLICATION.md) for lifecycle/source composition, [UI ownership](UI-OWNERSHIP.md) and [voice ownership](VOICE-OWNERSHIP.md) for controller state, and [data notices](../DATA_SOURCES.md) for source restrictions. The sections below retain accumulated upstream runtime notes. The Build 001 section above describes the bounded shell and native bridge; broader product/feature-engine proposals require separate implementation evidence.
+
+## Existing runtime notes
+
 Vessel sources can report healthy empty coverage using a current, complete
 snapshot with zero raw rows, a healthy transport and a positive last-message
 time. This clears obsolete contacts and settles startup without manufacturing

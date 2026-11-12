@@ -1,5 +1,7 @@
 # MCP setup
 
+> Fork documentation: [Map](README.md) · [Unified product](UNIFIED-WORLD.md). Existing runtime behavior below; integration proposals are not enabled features.
+
 Use God's Eye View from Claude and Codex: tools, links, and the live globe
 inside the conversation. Agents: follow these steps in order and check each
 one before going on.
@@ -7,7 +9,7 @@ one before going on.
 ## 1. Run the app
 
 ```sh
-npm install
+npm ci
 npm run build:panel   # the in-conversation globe; rerun after app changes
 npm run dev           # http://localhost:4173, keep it running
 ```

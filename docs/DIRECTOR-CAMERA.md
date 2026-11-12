@@ -1,5 +1,7 @@
 # Director camera directions
 
+> Fork documentation: [Map](README.md) · [Unified product](UNIFIED-WORLD.md). Existing runtime behavior below; integration proposals are not enabled features.
+
 Version 4 scene documents can name geographic anchors and describe an explicit
 camera move followed by a hold. Existing camera-pose shots still use the ordinary
 camera flight. Import, playback, Load, Replay and seek accept the new directions;

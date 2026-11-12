@@ -1,5 +1,7 @@
 # Realtime voice ownership
 
+> Fork documentation: [Map](README.md) · [Unified product](UNIFIED-WORLD.md). Existing runtime behavior below; integration proposals are not enabled features.
+
 `realtimeController.js` composes the session and owns its status, UI bindings and
 overall lifetime. It coordinates startup and shutdown. `realtimeFacade.js`
 preserves existing methods and properties by delegation, without copying state.

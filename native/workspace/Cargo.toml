@@ -1,0 +1,37 @@
+[package]
+name = "neighbor-workspace"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.99.1"
+
+[dependencies]
+quanta-core = { path = "../../../Quanta/native/quanta-core" }
+quanta-world = { path = "../../../Quanta/native/quanta-world" }
+serde_json = "1"
+sha2 = "0.10"
+blake3 = "1.8"
+
+tempfile = "3"
+
+[profile.dev]
+debug = 0
+incremental = false
+
+[profile.test]
+debug = 0
+incremental = false
+
+# Match Quanta's qualified optimized profile without removing arithmetic guards.
+[profile.release]
+opt-level = 3
+overflow-checks = true
+debug-assertions = true
+lto = "thin"
+codegen-units = 16
+debug = 0
+strip = "none"
+incremental = false
+
+[lints.rust]
+unsafe_op_in_unsafe_fn = "deny"
+unused_must_use = "deny"

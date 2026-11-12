@@ -1,5 +1,7 @@
 # Preferred GPU and browser setup for PR review
 
+> Fork documentation: [Map](README.md) · [Unified product](UNIFIED-WORLD.md). Existing runtime behavior below; integration proposals are not enabled features.
+
 Use this setup when the [maintainer workflow](MAINTAINER_WORKFLOW.md) identifies
 isolation as warranted: security-sensitive changes, new external data sources or
 data layers, new or changed access endpoints, or changes that introduce dependency

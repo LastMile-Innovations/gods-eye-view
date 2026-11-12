@@ -1,6 +1,6 @@
 import { catalogControlServices } from './catalog.js';
 import { StyleManager } from '../ui/composition.js';
-import { flyToAustin } from '../camera.js';
+import { flyToAustin, showWholeEarth } from '../camera.js';
 import { initCockpitCloudEffects } from '../cockpitCloudEffects.js';
 import { t } from '../i18n/index.js';
 
@@ -8,6 +8,7 @@ import { t } from '../i18n/index.js';
 export function createApplicationControls({
   scene: { viewer, mapStackController, operations },
   loaderStatus,
+  initialWorld = false,
   Controls = StyleManager,
   services,
   catalog,
@@ -42,8 +43,21 @@ export function createApplicationControls({
 
   // If no share link state, do default fly-to Austin
   if (!styleManager.hasShareState) {
-    loaderStatus.textContent = t('Flying to Austin, TX...');
-    defer(flyToAustin(viewer));
+    if (initialWorld) {
+      loaderStatus.textContent = t('Opening your world…');
+      showWholeEarth(viewer);
+      void styleManager
+        .applyVisualState({
+          scopeEnabled: false,
+          hudVisible: false,
+          detectionMode: 'OFF',
+          bloomEnabled: false,
+        })
+        .catch(() => {});
+    } else {
+      loaderStatus.textContent = t('Flying to Austin, TX...');
+      defer(flyToAustin(viewer));
+    }
   } else {
     loaderStatus.textContent = t('Restoring shared view...');
   }

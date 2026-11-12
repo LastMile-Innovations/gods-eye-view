@@ -7,6 +7,8 @@ import {
   governorRequestRender,
   getRenderGovernorDiagnostics,
   _resetRenderGovernorForTest,
+  setRenderSurfaceHidden,
+  uninstallRenderGovernor,
 } from './renderGovernor.js';
 
 function makeViewer() {
@@ -14,12 +16,39 @@ function makeViewer() {
   const scene = {
     requestRenderMode: false,
     maximumRenderTimeChange: 0,
-    requestRender() { calls.requestRender += 1; },
+    requestRender() {
+      calls.requestRender += 1;
+    },
   };
   return { viewer: { scene }, scene, calls };
 }
 
 beforeEach(() => _resetRenderGovernorForTest());
+
+test('hidden owners registered before install suspend the new viewer and restore its loop', () => {
+  setRenderSurfaceHidden('document', true);
+  setRenderSurfaceHidden('desktop', true);
+  const viewer = { ...makeViewer().viewer, useDefaultRenderLoop: true };
+  installRenderGovernor(viewer);
+  installRenderGovernor(viewer);
+  assert.equal(viewer.useDefaultRenderLoop, false);
+  setRenderSurfaceHidden('document', false);
+  assert.equal(viewer.useDefaultRenderLoop, false);
+  setRenderSurfaceHidden('desktop', false);
+  assert.equal(viewer.useDefaultRenderLoop, true);
+});
+
+test('suspend/reveal and teardown preserve a deliberately disabled render loop', () => {
+  const viewer = { ...makeViewer().viewer, useDefaultRenderLoop: false };
+  installRenderGovernor(viewer);
+  setRenderSurfaceHidden('desktop', true);
+  setRenderSurfaceHidden('desktop', false);
+  assert.equal(viewer.useDefaultRenderLoop, false);
+  setRenderSurfaceHidden('document', true);
+  uninstallRenderGovernor(viewer);
+  assert.equal(viewer.useDefaultRenderLoop, false);
+  assert.equal(getRenderGovernorDiagnostics().suspended, false);
+});
 
 test('install with zero holds enters idle mode and pins maximumRenderTimeChange', () => {
   const { viewer, scene } = makeViewer();
@@ -48,7 +77,11 @@ test('holds are identity-keyed: double-hold cannot leak, double-release cannot c
   holdContinuousRender('traffic');
   holdContinuousRender('traffic');
   releaseContinuousRender('traffic');
-  assert.equal(scene.requestRenderMode, true, 'single release clears an idempotent double-hold');
+  assert.equal(
+    scene.requestRenderMode,
+    true,
+    'single release clears an idempotent double-hold',
+  );
   releaseContinuousRender('traffic');
   releaseContinuousRender('never-held');
   assert.equal(scene.requestRenderMode, true);
@@ -72,7 +105,10 @@ test('governorRequestRender forwards to the scene and records reasons only in id
   const baseline = calls.requestRender;
   governorRequestRender('layer-tick:earthquakes');
   assert.equal(calls.requestRender, baseline + 1);
-  assert.equal(getRenderGovernorDiagnostics().recentRequests.at(-1).reason, 'layer-tick:earthquakes');
+  assert.equal(
+    getRenderGovernorDiagnostics().recentRequests.at(-1).reason,
+    'layer-tick:earthquakes',
+  );
   holdContinuousRender('flights');
   const idleRequests = getRenderGovernorDiagnostics().recentRequests.length;
   governorRequestRender('slider');
@@ -94,7 +130,33 @@ test('holds registered before install apply at install time', () => {
   holdContinuousRender('flights');
   const { viewer, scene } = makeViewer();
   installRenderGovernor(viewer);
-  assert.equal(scene.requestRenderMode, false, 'pre-install hold keeps continuous mode');
+  assert.equal(
+    scene.requestRenderMode,
+    false,
+    'pre-install hold keeps continuous mode',
+  );
   releaseContinuousRender('flights');
   assert.equal(scene.requestRenderMode, true);
+});
+
+test('hidden surface suspends rendering without losing animation holds and reveal restores the prior loop', async () => {
+  const { setRenderSurfaceHidden } = await import('./renderGovernor.js');
+  _resetRenderGovernorForTest();
+  const viewer = {
+    scene: { requestRenderMode: false, requestRender() {} },
+    useDefaultRenderLoop: true,
+  };
+  installRenderGovernor(viewer);
+  holdContinuousRender('satellites');
+  setRenderSurfaceHidden('desktop', true);
+  assert.equal(viewer.useDefaultRenderLoop, false);
+  assert.deepEqual(getRenderGovernorDiagnostics().holds, ['satellites']);
+  setRenderSurfaceHidden('document', true);
+  setRenderSurfaceHidden('desktop', false);
+  assert.equal(viewer.useDefaultRenderLoop, false);
+  setRenderSurfaceHidden('document', false);
+  assert.equal(viewer.useDefaultRenderLoop, true);
+  assert.equal(viewer.scene.requestRenderMode, false);
+  releaseContinuousRender('satellites');
+  assert.equal(viewer.scene.requestRenderMode, true);
 });

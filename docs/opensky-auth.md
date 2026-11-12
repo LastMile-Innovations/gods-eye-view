@@ -1,5 +1,7 @@
 # OpenSky Auth Setup
 
+> Fork documentation: [Map](README.md) · [Unified product](UNIFIED-WORLD.md). Existing runtime behavior below; integration proposals are not enabled features.
+
 God's Eye View uses explicit auth modes for `/api/flights`:
 
 - `OPENSKY_AUTH_MODE=oauth` (default, recommended)

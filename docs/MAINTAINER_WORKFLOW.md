@@ -4,6 +4,10 @@ Either maintainer listed in [CONTRIBUTING.md](../CONTRIBUTING.md) can accept a
 contribution. The [community-pr skill](../.agents/skills/community-pr/SKILL.md)
 uses this procedure; contributor setup remains in `CONTRIBUTING.md`.
 
+## Fork versus upstream integration
+
+This document preserves the upstream community-review procedure below. In this fork, `origin` is `LastMile-Innovations/gods-eye-view` and `upstream` is `bilawalsidhu/gods-eye-view`. For a fork change, record the fork base and candidate SHA and use fork task authorization; upstream maintainers do not approve fork releases. For an upstream contribution, use the pinned upstream procedure below. Neither a review request nor these instructions authorize posting, merging or deployment.
+
 ## 1. Establish the review
 
 Verify upstream is `bilawalsidhu/gods-eye-view`, fetch `main`, and record its SHA

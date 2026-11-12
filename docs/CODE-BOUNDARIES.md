@@ -1,5 +1,7 @@
 # Formatting and component boundaries
 
+> Fork documentation: [Map](README.md) · [Unified product](UNIFIED-WORLD.md). Existing runtime behavior below; integration proposals are not enabled features.
+
 Run `npm run format` to format the files in `scripts/format-scope.json` plus
 automatically discovered runtime JavaScript in `scripts/format-runtime.json`, and
 `npm run format:check` to check that same list without writing. CI checks the

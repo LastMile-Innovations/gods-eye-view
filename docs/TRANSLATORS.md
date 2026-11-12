@@ -1,5 +1,7 @@
 # Translating God's Eye View
 
+> Fork documentation: [Map](README.md) · [Unified product](UNIFIED-WORLD.md). Existing runtime behavior below; integration proposals are not enabled features.
+
 Shipped languages: **English** (source and fallback), **Spanish** (`es`) and **Russian** (`ru`).
 
 ## How it works

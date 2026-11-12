@@ -1,0 +1,903 @@
+/* NeighborOS application system: opaque work surfaces, compact controls, native density. */
+.nw-shell {
+  --nd-bg: #181c1f;
+  --nd-surface: #202629;
+  --nd-raised: #2a3033;
+  --nd-border: #ffffff16;
+  --nd-text: #e4e4e7;
+  --nd-muted: #a1a1aa;
+  --nd-accent: #afd6c8;
+  --nd-radius: 10px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+.nw-shell button {
+  min-height: 30px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: none;
+  background: #272d30;
+  border-color: #7b96932e;
+}
+.nw-shell button:hover {
+  background: #32383b;
+}
+.nw-shell .nw-primary {
+  background: #e4e4e7;
+  border-color: #e4e4e7;
+  color: #18181b;
+}
+.nw-shell .nw-primary:hover {
+  background: #fafafa;
+}
+.nw-shell :is(input, select, textarea) {
+  border-radius: 5px;
+  padding: 7px 9px;
+  font-size: 13px;
+}
+.nw-shell :is(h1, h2, h3, p) {
+  margin-top: 0;
+}
+.nw-shell h1,
+.nw-shell .nw-service-head h1 {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.nw-shell h2 {
+  font-size: 16px;
+  font-weight: 600;
+}
+.nw-shell h3 {
+  font-size: 12px;
+  font-weight: 600;
+}
+.nw-shell .nw-field > span {
+  font-size: 12px;
+  color: #b2bfbb;
+}
+.nw-shell .nd-window {
+  border-radius: 10px;
+}
+.nw-shell .nd-titlebar {
+  height: 40px;
+  background: #252c2f;
+}
+.nw-shell .nd-window:not(.nd-focused) .nd-titlebar {
+  background: #202629;
+}
+.nw-shell .nd-context-badge {
+  min-height: 26px;
+  padding: 3px 6px;
+  border-color: transparent;
+  background: transparent;
+  color: #b5c2be;
+}
+.nw-shell .nd-titlebar button {
+  font-size: 12px;
+}
+.nw-shell .nw-domain-view,
+.nw-shell .nw-service-view {
+  padding: 16px;
+  gap: 14px;
+}
+.nw-shell .nw-service-head {
+  margin-bottom: 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--nd-border);
+}
+.nw-shell .nw-head-row {
+  gap: 8px;
+}
+.nw-shell .nw-head-row > .nw-stat-pills {
+  font-size: 11px;
+}
+.nw-shell .nw-stat-pills {
+  gap: 12px;
+}
+.nw-shell .nw-pill {
+  border: 0;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  color: var(--nd-muted);
+}
+.nw-shell .nw-tabs {
+  gap: 4px;
+  margin-top: 12px;
+}
+.nw-shell .nw-tabs button {
+  border-color: transparent;
+  background: transparent;
+}
+.nw-shell .nw-tabs .nw-primary {
+  background: #3b514b;
+  color: #e5f2ec;
+}
+.nw-shell .nw-service-card {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--nd-border);
+  border-radius: 0;
+  padding: 14px 0;
+  box-shadow: none;
+  margin: 0;
+}
+.nw-shell .nw-service-card h2 {
+  margin-bottom: 8px;
+}
+.nw-shell .nw-badge {
+  border: 0;
+  border-radius: 3px;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 3px 6px;
+  background: #2b3c3b;
+  color: #bdcec7;
+}
+.nw-shell .nw-price-tag {
+  font-size: 12px;
+  color: #c3d5cd;
+  font-weight: 500;
+}
+.nw-shell .nw-subpanel {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--nd-border);
+  padding: 12px 0;
+  border-radius: 0;
+}
+.nw-shell .nw-subpanel h3 {
+  color: #d3dcd7;
+}
+.nw-shell .nw-subpanel p {
+  font-size: 12px;
+}
+.nw-shell .nw-domain-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.nw-shell .nw-filter-bar {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--nd-border);
+}
+.nw-shell .nw-actions {
+  gap: 6px;
+}
+.nw-shell .nw-accent-btn {
+  color: var(--nd-text) !important;
+  border-color: var(--nd-border) !important;
+}
+.nw-shell .nw-preset-row {
+  display: block;
+  color: var(--nd-muted);
+  font-size: 12px;
+}
+.nw-shell .nw-preset-row summary {
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+.nw-shell .nw-preset-row button {
+  display: block;
+  margin: 4px 0;
+}
+.nw-shell .nw-record {
+  padding: 10px 12px !important;
+  border-radius: 4px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-bottom-color: var(--nd-border);
+  gap: 3px;
+}
+.nw-shell .nw-record strong {
+  font-size: 13px;
+}
+.nw-shell .nw-record:hover {
+  background: #2a383a;
+}
+.nw-shell .nw-record.nw-selected {
+  background: #31473f;
+  border-color: transparent;
+}
+.nw-shell .nw-qid {
+  background: #121c20;
+  font-size: 11px;
+}
+.nw-shell .nw-empty h2 {
+  font-size: 16px;
+}
+.nw-shell .nw-app-content .nw-sidebar h1 {
+  font-size: 16px;
+}
+.nw-shell .nw-app-content .nw-sidebar > .nw-eyebrow {
+  display: none;
+}
+.nw-shell .nw-app-content .nw-sidebar > .nw-muted.nw-hint {
+  display: none;
+}
+.nw-shell .nw-app-content .nw-inspector {
+  border-radius: 0;
+  border-left: 1px solid var(--nd-border);
+  background: #142024;
+}
+/* Projects has a persistent master list and independently scrolling document pane. */
+.nw-shell .nw-projects-app {
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+}
+.nw-shell .nw-app-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px 14px;
+  flex-shrink: 0;
+}
+.nw-shell .nw-app-toolbar h1 {
+  font-size: 14px;
+}
+.nw-toolbar-summary {
+  color: var(--nd-muted);
+  font-size: 12px;
+  margin-right: auto;
+}
+.nw-project-workspace {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  min-height: 0;
+}
+.nw-project-list {
+  padding: 12px 8px;
+  background: #1e2427;
+  border-right: 1px solid var(--nd-border);
+  overflow: auto;
+}
+.nw-project-list > input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.nw-shell .nw-project-list-row {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: start;
+  gap: 4px;
+  padding: 10px;
+  margin-bottom: 3px;
+  background: transparent;
+  border-color: transparent;
+}
+.nw-shell .nw-project-list-row[hidden] {
+  display: none;
+}
+.nw-project-list-row strong {
+  font-size: 12px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.nw-project-list-row span {
+  font-size: 11px;
+  color: var(--nd-muted);
+  text-transform: capitalize;
+}
+.nw-shell .nw-project-list-row[aria-pressed='true'] {
+  background: #303b37;
+}
+.nw-project-detail {
+  overflow: auto;
+  padding: 22px 24px;
+  min-width: 0;
+}
+.nw-shell .nw-project-detail .nw-project-card {
+  padding: 0;
+  border: 0;
+}
+.nw-shell .nw-project-detail .nw-project-card > h2 {
+  font-size: 21px;
+  margin: 8px 0;
+  line-height: 1.3;
+}
+.nw-project-properties {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--nd-muted);
+  margin: 18px 0;
+}
+.nw-shell .nw-project-properties select {
+  min-height: 28px;
+  text-transform: capitalize;
+  font-size: 12px;
+}
+.nw-shell .nw-linked-records {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  border-top: 1px solid var(--nd-border);
+  padding-top: 18px;
+}
+.nw-linked-records > :is(h3, button) {
+  grid-column: 1 / -1;
+}
+.nw-shell .nw-linked-records > button {
+  text-align: left;
+}
+.nw-shell .nw-linked-records > input {
+  min-width: 0;
+}
+.nw-shell .nw-projects-app > .nw-form-card {
+  padding: 20px;
+  overflow: auto;
+}
+.nw-shell .nw-projects-app > .nw-service-card {
+  padding: 20px;
+}
+.nw-shell .nw-project-columns {
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+/* World navigation is quiet by default. All inherited tools remain explicit. */
+body.neighbor-desktop:not(.neighbor-world-tools)
+  :is(
+    #command-dock,
+    #left-panel-stack,
+    #right-context-rail,
+    #intel-hud,
+    #top-center-actions,
+    #data-panel,
+    #cctv-panel,
+    #street-level-panel,
+    #scene-panel,
+    #global-context-panel,
+    #active-style-name,
+    #traffic-sync-chip,
+    #cctv-sync-chip,
+    #key-setup-chip
+  ) {
+  visibility: hidden;
+  pointer-events: none;
+}
+.nd-world-toolbar {
+  position: absolute;
+  right: 18px;
+  bottom: 122px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 5px;
+  border: 1px solid var(--nd-border);
+  border-radius: 8px;
+  background: #1b292de8;
+  box-shadow: 0 4px 18px #0004;
+  pointer-events: auto;
+  z-index: 0;
+}
+.nd-world-toolbar[hidden] {
+  display: none;
+}
+.nw-shell .nd-world-toolbar button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  border-color: transparent;
+  padding: 5px 7px;
+}
+.nw-shell .nd-world-toolbar button[aria-pressed='true'] {
+  background: #385249;
+}
+@container (max-width: 680px) {
+  .nw-project-workspace {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .nw-project-list {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--nd-border);
+    padding: 8px;
+    max-height: 126px;
+  }
+  .nw-project-list > input {
+    width: 130px;
+    flex-shrink: 0;
+    margin: 0;
+  }
+  .nw-shell .nw-project-list-row {
+    min-width: 140px;
+    width: 160px;
+    margin: 0;
+    flex-shrink: 0;
+  }
+  .nw-project-detail {
+    padding: 16px;
+  }
+  .nw-shell .nw-project-columns {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .nw-shell .nw-project-detail .nw-project-card > h2 {
+    font-size: 18px;
+  }
+}
+@media (max-width: 767px) {
+  .nw-shell button {
+    min-height: 36px;
+  }
+  .nd-world-toolbar {
+    right: 8px;
+    bottom: 126px;
+  }
+  .nw-shell .nd-world-toolbar button {
+    min-height: 40px;
+  }
+}
+.nw-shell .nw-linked-records {
+  display: flex;
+  flex-direction: column;
+}
+.nw-shell .nw-linked-records > button {
+  background: transparent;
+  border-color: transparent;
+  border-bottom-color: var(--nd-border);
+  border-radius: 0;
+  padding: 7px 2px;
+}
+.nw-shell .nw-linked-records > button:hover {
+  background: #2b393b;
+}
+.nw-inline-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px;
+}
+.nw-inline-form > :is(input, select) {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Semantic neutral controls, with mint reserved for focus and object selection. */
+.nw-shell {
+  color-scheme: dark;
+  accent-color: #becdc5;
+}
+.nw-shell .nw-header {
+  background: #161c1eed;
+  border-bottom: 1px solid var(--nd-border);
+}
+.nw-shell .nw-tabs .nw-primary {
+  background: #ffffff0e;
+  color: #ededf0;
+  border-color: #ffffff16;
+}
+.nw-shell .nd-titlebar .nd-context-badge {
+  border-radius: 5px;
+}
+.nw-shell :is(input, textarea, select) {
+  background-color: #13181b;
+  border-color: #ffffff1c;
+  box-shadow: 0 1px 2px #0002;
+}
+.nw-shell .nw-service-card .nw-primary {
+  font-weight: 500;
+}
+.nw-shell .nd-launcher {
+  background: #1b2023;
+  border: 1px solid #ffffff20;
+  border-radius: 12px;
+  box-shadow: 0 24px 80px #0008;
+}
+.nw-shell .nd-commands button {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+.nw-shell .nd-commands button:focus-visible {
+  outline: none;
+  border-color: #ffffff25;
+  background: #ffffff0f;
+}
+.nw-shell .nd-command-group {
+  font-size: 11px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ==========================================================================
+   NeighborOS Market — Universal Shopping & Commerce Canvas (NBR-MARKET-001)
+   ========================================================================== */
+.nw-product-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  padding: 10px 0;
+}
+.nw-product-card {
+  display: flex;
+  flex-direction: column;
+  padding: 14px;
+  background: #181d21 !important;
+  border: 1px solid var(--nd-border) !important;
+  border-radius: 8px !important;
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+.nw-product-card:hover {
+  border-color: #ffffff2b !important;
+  transform: translateY(-1px);
+}
+.nw-rating-tag {
+  color: #f4b860;
+  font-size: 12px;
+  font-weight: 500;
+}
+.nw-product-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0;
+}
+.nw-landed-highlight {
+  margin: 10px 0 14px 0;
+  padding: 8px 10px;
+  background: #13171a;
+  border-radius: 6px;
+  border-left: 3px solid #59ddd0;
+  font-size: 12px;
+}
+.nw-product-back-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0 14px 0;
+  border-bottom: 1px solid var(--nd-border);
+  margin-bottom: 14px;
+}
+.nw-breadcrumb {
+  font-size: 12px;
+  color: var(--nd-muted);
+}
+.nw-product-workspace {
+  display: grid;
+  grid-template-columns: 380px minmax(0, 1fr);
+  gap: 20px;
+  min-height: 0;
+}
+.nw-product-media-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.nw-rep-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+.nw-3d-viewer-box {
+  background: #101417;
+  border: 1px solid var(--nd-border);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: inset 0 2px 12px #0004;
+}
+.nw-interactive-3d-canvas {
+  width: 100%;
+  height: 240px;
+  display: block;
+  cursor: grab;
+}
+.nw-interactive-3d-canvas:active {
+  cursor: grabbing;
+}
+.nw-viewer-caption {
+  font-size: 11px;
+  color: var(--nd-muted);
+  padding: 6px 10px;
+  text-align: center;
+  width: 100%;
+  background: #14191d;
+  border-top: 1px solid var(--nd-border);
+  margin: 0;
+}
+.nw-product-detail-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+.nw-variant-selector-card {
+  padding: 14px;
+  background: #161b1e !important;
+  border: 1px solid var(--nd-border) !important;
+  border-radius: 8px !important;
+}
+.nw-variant-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0;
+}
+.nw-variant-btn {
+  font-size: 12px !important;
+  padding: 6px 12px !important;
+  border-radius: 6px !important;
+}
+.nw-variant-meta {
+  font-size: 12px;
+  border-top: 1px solid var(--nd-border);
+  padding-top: 8px;
+  margin-top: 6px;
+}
+.nw-buying-options-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.nw-options-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1px solid var(--nd-border);
+  padding-bottom: 8px;
+}
+.nw-options-header h2 {
+  font-size: 16px;
+  margin: 0;
+}
+.nw-condition-filter,
+.nw-sort-control {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.nw-offers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.nw-offer-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 14px !important;
+  background: #171c20 !important;
+  border: 1px solid var(--nd-border) !important;
+  border-radius: 8px !important;
+}
+.nw-offer-row-lowest {
+  border-color: #59ddd055 !important;
+  box-shadow: 0 0 12px #59ddd018;
+}
+.nw-offer-row-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+.nw-offer-seller-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.nw-offer-pricing {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+.nw-landed-breakdown {
+  font-size: 11px;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+.nw-offer-fulfillment-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+}
+.nw-cross-app-bar {
+  padding-top: 14px;
+  border-top: 1px solid var(--nd-border);
+}
+
+/* ==========================================================================
+   Universal Multi-Merchant Cart
+   ========================================================================== */
+.nw-cart-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 16px;
+  padding: 12px 0;
+}
+.nw-cart-items-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.nw-merchant-cart-group {
+  padding: 14px !important;
+  background: #171c20 !important;
+  border: 1px solid var(--nd-border) !important;
+  border-radius: 8px !important;
+}
+.nw-cart-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--nd-border);
+}
+.nw-cart-item-row:last-child {
+  border-bottom: 0;
+}
+.nw-cart-item-desc {
+  flex: 1;
+  font-size: 13px;
+}
+.nw-cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nw-cart-summary-card {
+  padding: 16px !important;
+  background: #181d22 !important;
+  border: 1px solid var(--nd-border) !important;
+  border-radius: 8px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: fit-content;
+}
+.nw-gate-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--nd-text);
+  background: #13171a;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--nd-border);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Projects Stage Track & Summary
+   ========================================================================== */
+.nw-stage-track {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 10px 0;
+}
+.nw-stage-step {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #1c2226;
+  color: var(--nd-muted);
+}
+.nw-stage-active {
+  background: #59ddd02b;
+  color: #59ddd0;
+  font-weight: 600;
+  border: 1px solid #59ddd066;
+}
+.nw-stage-done {
+  background: #2b393b;
+  color: #bdcec7;
+}
+
+/* ==========================================================================
+   Records Overview & Kind Pills
+   ========================================================================== */
+.nw-kind-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 8px 0;
+}
+.nw-records-overview {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ==========================================================================
+   Revision Diff Split Pane
+   ========================================================================== */
+.nw-revision-compare {
+  margin: 12px 0;
+  padding: 12px;
+  background: #15191c !important;
+  border: 1px solid var(--nd-border) !important;
+  border-radius: 8px !important;
+}
+.nw-diff-pane {
+  padding: 10px;
+  background: #181d21;
+  border-radius: 6px;
+  border: 1px solid var(--nd-border);
+  font-size: 12px;
+}
+.nw-diff-current {
+  border-color: #59ddd044;
+}
+
+/* ==========================================================================
+   Window Status Bar
+   ========================================================================== */
+.nw-window-statusbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 6px 14px;
+  background: #121619;
+  border-top: 1px solid var(--nd-border);
+  font-size: 11px;
+  color: var(--nd-muted);
+  flex-shrink: 0;
+}
+.nw-statusbar-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+@container (max-width: 720px) {
+  .nw-product-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .nw-cart-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.nw-workflow-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 12px 0;
+}
+.nw-workflow-choices .nw-field {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+.nw-workflow-choices input {
+  width: auto;
+}
+
+.nw-workflow-result-row {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--nw-border, #34383c);
+}
+.nw-workflow-result-row button {
+  margin-top: 8px;
+}

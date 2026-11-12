@@ -1,5 +1,7 @@
 # Director scene actions
 
+> Fork documentation: [Map](README.md) · [Unified product](UNIFIED-WORLD.md). Existing runtime behavior below; integration proposals are not enabled features.
+
 Version-6 scene documents can attach actions to stable GeoJSON feature IDs in a
 shot's selected data packs. Existing versions 1–5 migrate without adding actions.
 Import validates data and references; it does not load assets or execute actions.

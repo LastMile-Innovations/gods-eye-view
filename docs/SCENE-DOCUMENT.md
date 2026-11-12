@@ -1,5 +1,7 @@
 # Scene document format
 
+> Fork documentation: [Map](README.md) · [Unified product](UNIFIED-WORLD.md). Existing runtime behavior below; integration proposals are not enabled features.
+
 Scenes exports a UTF-8 JSON project. Version 5 adds [data packs](DIRECTOR-DATA-PACKS.md)
 and is the write format. Versions 1, 2, 3, 4 and unversioned legacy files migrate on
 import without converting their existing shots into authored moves. Unknown versions or unsupported fields are rejected with

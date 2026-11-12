@@ -1,5 +1,7 @@
 # Director: reusable scene playback
 
+> Fork documentation: [Map](README.md) · [Unified product](UNIFIED-WORLD.md). Existing runtime behavior below; integration proposals are not enabled features.
+
 Director is the scene playback system. Ordered shot execution, authored timing and playback clocks are separated
 from the scene editor and application rendering. This document
 records implemented camera directions, data packs, declarative interactions and
